@@ -1,0 +1,32 @@
+all: tollSystem
+
+tollSystem: main.o vehicleFactory.o vehicle.o bike.o car.o bus.o rickshaw.o threeAxelPlus.o
+	g++ -g -Wall -fprofile-arcs -ftest-coverage main.o vehicleFactory.o vehicle.o bike.o car.o bus.o rickshaw.o threeAxelPlus.o -o tollSystem
+
+main.o: src/main.cpp include/allHeaderFiles.h include/vehicleFactory.h
+	g++ -c src/main.cpp
+
+vehicleFactory.o: src/vehicleFactory.cpp include/allHeaderFiles.h
+	g++ -c src/vehicleFactory.cpp
+
+vehicle.o: src/vehicle.cpp include/vehicle.h
+	g++ -c src/vehicle.cpp
+
+bike.o: src/bike.cpp include/bike.h
+	g++ -c src/bike.cpp
+
+car.o: src/car.cpp include/car.h
+	g++ -c src/car.cpp
+
+bus.o: src/bus.cpp include/bus.h
+	g++ -c src/bus.cpp
+
+rickshaw.o: src/rickshaw.cpp include/rickshaw.h
+	g++ -c src/rickshaw.cpp
+
+threeAxelPlus.o: src/threeAxelPlus.cpp include/threeAxelPlus.h
+	g++ -c src/threeAxelPlus.cpp
+
+clean:
+	rm *.o
+	rm tollSystem
